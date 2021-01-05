@@ -17,7 +17,7 @@ export async function getArtScreenshot(hash: string, type: FileType, isDev: bool
     const page = await getPage(isDev);
     await page.setViewport({ width: 1125, height: 1800 });
     await page.goto(`https://pob.studio/preview/art/${hash}`);
-    const file = await page.screenshot({ type });
+    const file = await page.screenshot({ type, quality: 20, });
     return file;
 }
 
@@ -25,7 +25,7 @@ export async function getPalleteScreenshot(address: string, type: FileType, isDe
     const page = await getPage(isDev);
     await page.setViewport({ width: 1200, height: 627 });
     await page.goto(`https://pob.studio/preview/pallete/${address}`);
-    const file = await page.screenshot({ type });
+    const file = await page.screenshot({ type, quality: 20, });
     return file;
 }
 
@@ -33,6 +33,6 @@ export async function getDefaultScreenshot(hash: string, title: string, subtitle
     const page = await getPage(isDev);
     await page.setViewport({ width: 1200, height: 627 });
     await page.goto(`https://pob.studio/preview?hash=${hash}&title=${title}&subtitle=${subtitle}`);
-    const file = await page.screenshot({ type });
+    const file = await page.screenshot({ type, quality: 20, });
     return file;
 }
