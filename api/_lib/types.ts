@@ -9,9 +9,9 @@ export interface ArtParsedRequest extends ParsedRequest {
     type: 'art';
 }
 
-export interface PalleteParsedRequest extends ParsedRequest {
+export interface PaletteParsedRequest extends ParsedRequest {
     address: string;
-    type: 'pallete';
+    type: 'palette';
 }
 
 export interface DefaultParsedRequest extends ParsedRequest {

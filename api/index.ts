@@ -1,7 +1,7 @@
 import { IncomingMessage, ServerResponse } from 'http';
 import { parseRequest } from './_lib/parser';
-import { getArtScreenshot, getDefaultScreenshot, getPalleteScreenshot } from './_lib/chromium';
-import { ArtParsedRequest, DefaultParsedRequest, PalleteParsedRequest } from './_lib/types';
+import { getArtScreenshot, getDefaultScreenshot, getPaletteScreenshot } from './_lib/chromium';
+import { ArtParsedRequest, DefaultParsedRequest, PaletteParsedRequest } from './_lib/types';
 
 const isDev = !process.env.AWS_REGION;
 // const isHtmlDebug = process.env.OG_HTML_DEBUG === '1';
@@ -18,8 +18,8 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
         if (parsedRequest.type === 'default') {
             file = await getDefaultScreenshot((parsedRequest as DefaultParsedRequest).hash, (parsedRequest as DefaultParsedRequest).title, (parsedRequest as DefaultParsedRequest).subtitle, 'jpeg', isDev);
         }
-        if (parsedRequest.type === 'pallete') {
-            file = await getPalleteScreenshot((parsedRequest as PalleteParsedRequest).address, 'jpeg', isDev);
+        if (parsedRequest.type === 'palette') {
+            file = await getPaletteScreenshot((parsedRequest as PaletteParsedRequest).address, 'jpeg', isDev);
         }
         res.statusCode = 200;
         res.setHeader('Content-Type', `image/jpeg`);

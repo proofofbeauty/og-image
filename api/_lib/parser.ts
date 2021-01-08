@@ -1,6 +1,6 @@
 import { IncomingMessage } from 'http';
 import { parse } from 'url';
-import { ArtParsedRequest, DefaultParsedRequest, PalleteParsedRequest, ParsedRequest } from './types';
+import { ArtParsedRequest, DefaultParsedRequest, PaletteParsedRequest, ParsedRequest } from './types';
 
 export function parseRequest(req: IncomingMessage) {
     console.log('HTTP ' + req.url);
@@ -19,10 +19,10 @@ export function parseRequest(req: IncomingMessage) {
         return parsedRequest;
     }
 
-    if (previewType.includes('pallete')) {
-        const parsedRequest: PalleteParsedRequest = {
+    if (previewType.includes('palette')) {
+        const parsedRequest: PaletteParsedRequest = {
             address: address as string,
-            type: 'pallete',
+            type: 'palette',
         };
     
         return parsedRequest;

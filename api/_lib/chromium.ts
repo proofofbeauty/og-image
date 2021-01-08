@@ -21,10 +21,10 @@ export async function getArtScreenshot(hash: string, type: FileType, isDev: bool
     return file;
 }
 
-export async function getPalleteScreenshot(address: string, type: FileType, isDev: boolean) {
+export async function getPaletteScreenshot(address: string, type: FileType, isDev: boolean) {
     const page = await getPage(isDev);
     await page.setViewport({ width: 1200, height: 627 });
-    await page.goto(`https://pob.studio/preview/pallete/${address}`);
+    await page.goto(`https://pob.studio/preview/palette/${address}`);
     const file = await page.screenshot({ type, quality: 20, });
     return file;
 }
