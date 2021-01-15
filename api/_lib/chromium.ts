@@ -16,7 +16,7 @@ async function getPage(isDev: boolean) {
 export async function getArtScreenshot(hash: string, type: FileType, isDev: boolean) {
     const page = await getPage(isDev);
     await page.setViewport({ width: 1125, height: 1800 });
-    await page.goto(`https://pob.studio/preview/art/${hash}`);
+    await page.goto(`https://pob.studio/hash/preview/art/${hash}`);
     const file = await page.screenshot({ type, quality: 20, });
     return file;
 }
@@ -24,7 +24,7 @@ export async function getArtScreenshot(hash: string, type: FileType, isDev: bool
 export async function getPaletteScreenshot(address: string, type: FileType, isDev: boolean) {
     const page = await getPage(isDev);
     await page.setViewport({ width: 1200, height: 627 });
-    await page.goto(`https://pob.studio/preview/palette/${address}`);
+    await page.goto(`https://pob.studio/hash/preview/palette/${address}`);
     const file = await page.screenshot({ type, quality: 20, });
     return file;
 }
@@ -32,7 +32,7 @@ export async function getPaletteScreenshot(address: string, type: FileType, isDe
 export async function getDefaultScreenshot(hash: string, title: string, subtitle: string = '',type: FileType, isDev: boolean) {
     const page = await getPage(isDev);
     await page.setViewport({ width: 1200, height: 627 });
-    await page.goto(`https://pob.studio/preview?hash=${hash}&title=${title}&subtitle=${subtitle}`);
+    await page.goto(`https://pob.studio/hash/preview?hash=${hash}&title=${title}&subtitle=${subtitle}`);
     const file = await page.screenshot({ type, quality: 20, });
     return file;
 }
