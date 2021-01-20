@@ -4,6 +4,11 @@ export interface ParsedRequest {
     type: string;
 }
 
+export interface FullArtParsedRequest extends ParsedRequest {
+    hash: string;
+    type: 'full-art';
+}
+
 export interface ArtParsedRequest extends ParsedRequest {
     hash: string;
     type: 'art';

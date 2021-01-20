@@ -1,6 +1,6 @@
 import { IncomingMessage } from 'http';
 import { parse } from 'url';
-import { ArtParsedRequest, DefaultParsedRequest, PaletteParsedRequest, ParsedRequest } from './types';
+import { ArtParsedRequest, FullArtParsedRequest, DefaultParsedRequest, PaletteParsedRequest, ParsedRequest } from './types';
 
 export function parseRequest(req: IncomingMessage) {
     console.log('HTTP ' + req.url);
@@ -9,6 +9,15 @@ export function parseRequest(req: IncomingMessage) {
     const previewType = (pathname || '/').slice(1);
 
     const { hash, address, title, subtitle } = (query || {});
+
+    if (previewType.includes('full-art')) {
+        const parsedRequest: FullArtParsedRequest = {
+            hash: hash as string,
+            type: 'full-art',
+        };
+    
+        return parsedRequest;
+    }
 
     if (previewType.includes('art')) {
         const parsedRequest: ArtParsedRequest = {
