@@ -12,14 +12,17 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
 
         console.log(parsedRequest);
         let file: Buffer = Buffer.alloc(0);
+        if (parsedRequest.type === 'full-art') {
+            file = await getArtScreenshot((parsedRequest as ArtParsedRequest).hash, 'jpeg', 100, isDev);
+        }
         if (parsedRequest.type === 'art') {
-            file = await getArtScreenshot((parsedRequest as ArtParsedRequest).hash, 'jpeg', isDev);
+            file = await getArtScreenshot((parsedRequest as ArtParsedRequest).hash, 'jpeg', 20, isDev);
         }
         if (parsedRequest.type === 'default') {
-            file = await getDefaultScreenshot((parsedRequest as DefaultParsedRequest).hash, (parsedRequest as DefaultParsedRequest).title, (parsedRequest as DefaultParsedRequest).subtitle, 'jpeg', isDev);
+            file = await getDefaultScreenshot((parsedRequest as DefaultParsedRequest).hash, (parsedRequest as DefaultParsedRequest).title, (parsedRequest as DefaultParsedRequest).subtitle, 'jpeg', 20, isDev);
         }
         if (parsedRequest.type === 'palette') {
-            file = await getPaletteScreenshot((parsedRequest as PaletteParsedRequest).address, 'jpeg', isDev);
+            file = await getPaletteScreenshot((parsedRequest as PaletteParsedRequest).address, 'jpeg', 20, isDev);
         }
         res.statusCode = 200;
         res.setHeader('Content-Type', `image/jpeg`);
