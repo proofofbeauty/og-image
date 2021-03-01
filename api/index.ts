@@ -1,6 +1,6 @@
 import { IncomingMessage, ServerResponse } from 'http';
 import { parseRequest } from './_lib/parser';
-import { getArtScreenshot, getDefaultScreenshot, getPaletteScreenshot } from './_lib/chromium';
+import { getArtScreenshot, getDefaultScreenshot, getPaletteScreenshot, getPrintArtScreenshot } from './_lib/chromium';
 import { ArtParsedRequest, DefaultParsedRequest, PaletteParsedRequest } from './_lib/types';
 
 const isDev = !process.env.AWS_REGION;
@@ -17,6 +17,9 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
         }
         if (parsedRequest.type === 'art') {
             file = await getArtScreenshot((parsedRequest as ArtParsedRequest).hash, 'jpeg', 20, isDev);
+        }
+        if (parsedRequest.type === 'print-art') {
+            file = await getPrintArtScreenshot((parsedRequest as ArtParsedRequest).hash, 'jpeg', 100, isDev);
         }
         if (parsedRequest.type === 'default') {
             file = await getDefaultScreenshot((parsedRequest as DefaultParsedRequest).hash, (parsedRequest as DefaultParsedRequest).title, (parsedRequest as DefaultParsedRequest).subtitle, 'jpeg', 20, isDev);
