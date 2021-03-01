@@ -37,7 +37,7 @@ export default allowCors(async function handler(req: IncomingMessage, res: Serve
             file = await getArtScreenshot((parsedRequest as ArtParsedRequest).hash, 'jpeg', 20, isDev);
         }
         if (parsedRequest.type === 'print-art') {
-            file = await getPrintArtScreenshot((parsedRequest as PrintArtParsedRequest).hash, 'jpeg', 100, isDev);
+            file = await getPrintArtScreenshot((parsedRequest as PrintArtParsedRequest).id, 'jpeg', 100, isDev);
         }
         if (parsedRequest.type === 'default') {
             file = await getDefaultScreenshot((parsedRequest as DefaultParsedRequest).hash, (parsedRequest as DefaultParsedRequest).title, (parsedRequest as DefaultParsedRequest).subtitle, 'jpeg', 20, isDev);

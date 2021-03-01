@@ -8,11 +8,11 @@ export function parseRequest(req: IncomingMessage) {
 
     const previewType = (pathname || '/').slice(1);
 
-    const { hash, address, title, subtitle } = (query || {});
+    const { id, hash, address, title, subtitle } = (query || {});
 
     if (previewType.includes('print-art')) {
         const parsedRequest: PrintArtParsedRequest = {
-            hash: hash as string,
+            id: id as string,
             type: 'print-art',
         };
     

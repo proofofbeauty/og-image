@@ -6,7 +6,7 @@ export interface ParsedRequest {
 }
 
 export interface PrintArtParsedRequest extends ParsedRequest {
-    hash: string;
+    id: string;
     type: 'print-art';
 }
 
