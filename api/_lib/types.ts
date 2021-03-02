@@ -2,6 +2,12 @@ export type FileType = 'png' | 'jpeg';
 
 export interface ParsedRequest {
     type: string;
+
+}
+
+export interface PrintArtParsedRequest extends ParsedRequest {
+    id: string;
+    type: 'print-art';
 }
 
 export interface FullArtParsedRequest extends ParsedRequest {

@@ -13,6 +13,14 @@ async function getPage(isDev: boolean) {
     return _page;
 }
 
+export async function getPrintArtScreenshot(hash: string, type: FileType, quality: number, isDev: boolean) {
+    const page = await getPage(isDev);
+    await page.setViewport({ width: 3000, height: 4800 });
+    await page.goto(`https://pob.studio/hash/preview/print-art/${hash}`);
+    const file = await page.screenshot({ type, quality, });
+    return file;
+}
+
 export async function getArtScreenshot(hash: string, type: FileType, quality: number, isDev: boolean) {
     const page = await getPage(isDev);
     await page.setViewport({ width: 1125, height: 1800 });
