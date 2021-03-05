@@ -13,13 +13,13 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
         console.log(parsedRequest);
         let file: Buffer = Buffer.alloc(0);
         if (parsedRequest.type === 'full-art') {
-            file = await getArtScreenshot((parsedRequest as FullArtParsedRequest).hash, 'jpeg', 100, isDev);
+            file = await getArtScreenshot((parsedRequest as FullArtParsedRequest).hash, 'jpeg', 80, isDev);
         }
         if (parsedRequest.type === 'art') {
             file = await getArtScreenshot((parsedRequest as ArtParsedRequest).hash, 'jpeg', 20, isDev);
         }
         if (parsedRequest.type === 'print-art') {
-            file = await getPrintArtScreenshot((parsedRequest as PrintArtParsedRequest).id, 'jpeg', 100, isDev);
+            file = await getPrintArtScreenshot((parsedRequest as PrintArtParsedRequest).id, 'jpeg', 80, isDev);
         }
         if (parsedRequest.type === 'default') {
             file = await getDefaultScreenshot((parsedRequest as DefaultParsedRequest).hash, (parsedRequest as DefaultParsedRequest).title, (parsedRequest as DefaultParsedRequest).subtitle, 'jpeg', 20, isDev);

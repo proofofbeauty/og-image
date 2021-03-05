@@ -13,10 +13,10 @@ async function getPage(isDev: boolean) {
     return _page;
 }
 
-export async function getPrintArtScreenshot(hash: string, type: FileType, quality: number, isDev: boolean) {
+export async function getPrintArtScreenshot(id: string, type: FileType, quality: number, isDev: boolean) {
     const page = await getPage(isDev);
-    await page.setViewport({ width: 2250, height: 3600 });
-    await page.goto(`https://pob.studio/hash/preview/print-art/${hash}`);
+    await page.setViewport({ width: 3000, height: 4800 });
+    await page.goto(`https://pob.studio/hash/preview/print-art/${id}`);
     const file = await page.screenshot({ type, quality, });
     return file;
 }
