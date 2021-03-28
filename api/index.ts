@@ -22,7 +22,7 @@ export default async function handler(req: IncomingMessage, res: ServerResponse)
             file = await getPrintArtScreenshot((parsedRequest as PrintArtParsedRequest).id, 'jpeg', 80, isDev);
         }
         if (parsedRequest.type === 'default') {
-            file = await getDefaultScreenshot((parsedRequest as DefaultParsedRequest).hash, (parsedRequest as DefaultParsedRequest).title, (parsedRequest as DefaultParsedRequest).subtitle, 'jpeg', 20, isDev);
+            file = await getDefaultScreenshot((parsedRequest as DefaultParsedRequest).title, (parsedRequest as DefaultParsedRequest).subtitle, 'jpeg', 20, isDev);
         }
         if (parsedRequest.type === 'palette') {
             file = await getPaletteScreenshot((parsedRequest as PaletteParsedRequest).address, 'jpeg', 20, isDev);

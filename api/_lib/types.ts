@@ -26,7 +26,6 @@ export interface PaletteParsedRequest extends ParsedRequest {
 }
 
 export interface DefaultParsedRequest extends ParsedRequest {
-    hash: string;
     title: string;
     subtitle: string;
     type: 'default';

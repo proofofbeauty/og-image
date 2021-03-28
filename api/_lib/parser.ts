@@ -48,7 +48,6 @@ export function parseRequest(req: IncomingMessage) {
 
     if (previewType.includes('default')) {
         const parsedRequest: DefaultParsedRequest = {
-            hash: hash as string,
             title: title as string,
             subtitle: subtitle as string,
             type: 'default',

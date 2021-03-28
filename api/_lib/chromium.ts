@@ -37,10 +37,10 @@ export async function getPaletteScreenshot(address: string, type: FileType, qual
     return file;
 }
 
-export async function getDefaultScreenshot(hash: string, title: string, subtitle: string = '',type: FileType, quality: number, isDev: boolean) {
+export async function getDefaultScreenshot(title: string, subtitle: string = '',type: FileType, quality: number, isDev: boolean) {
     const page = await getPage(isDev);
     await page.setViewport({ width: 1200, height: 627 });
-    await page.goto(`https://pob.studio/preview?hash=${hash}&title=${title}&subtitle=${subtitle}`);
+    await page.goto(`https://pob.studio/preview?title=${title}&subtitle=${subtitle}`);
     const file = await page.screenshot({ type, quality, });
     return file;
 }
